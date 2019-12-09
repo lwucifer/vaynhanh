@@ -159,7 +159,6 @@
             },
             onFrontSelect() {
                 var that = this;
-                that.loadFront = true;
                 uni.chooseImage({
                     count: 1,
                     sizeType: ['compressed'],
@@ -172,6 +171,7 @@
                             file: filePath,
                             filePath: ""
                         };
+                        that.loadFront = true;
                         userService.saveFaceauth(input, function (obj, msg, code) {
                             that.frontImg = JSON.stringify(msg);
                             that.loadFront = false;
@@ -189,7 +189,6 @@
                     util.tip(that.$t('tip.qingShangChuanZhengJianZhengMianZhaoPian'))
                     return;
                 }
-                that.loadBack = true;
                 uni.chooseImage({
                     count: 1,
                     sizeType: ['compressed'],
@@ -202,6 +201,7 @@
                             file: filePath,
                             filePath: "{'filePath':[" + that.frontImg + "]}"
                         };
+                        that.loadBack = true;
                         userService.saveFaceauth(input, function (obj, msg, code) {
                             that.backImg = JSON.stringify(msg);
                             that.loadBack = false;

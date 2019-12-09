@@ -227,5 +227,6 @@
         margin-top: 1rem;
         font-size: 1rem;
         border-radius: 50px;
+        background-color: #FF9700;
     }
 </style>

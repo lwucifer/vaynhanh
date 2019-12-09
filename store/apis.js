@@ -60,4 +60,6 @@ export default {
     GET_INFO_ZHIMA: '/actzm/mine/zhima/zhimaCredit.htm', //获取芝麻认证
     GET_INFO_TAOBAO: '/actzm/mine/zhima/taobaoCredit.htm', //获取淘宝认证
 
+    PRODUCT_TIME: '/act/product/productList.htm',
+
 }

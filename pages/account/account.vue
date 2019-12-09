@@ -2,7 +2,7 @@
     <view class="body content">
         <view class="flex1">
             <view class="flex-center">
-                <image src="../../static/img/header.jpg" mode="center"></image>
+                <image src="../../static/img/header.png" mode="center"></image>
             </view>
         </view>
         <view class="flex2">

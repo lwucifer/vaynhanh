@@ -104,7 +104,8 @@ const langs = {
                 yiRenZhengShiFouChongXiuRenZheng: 'Đã các thực, cần xác thực lại?',
                 yingHangKaYiBangDingShiFouChongXiuRenZheng: 'Đã liên kết tài khoản ngân hàng, cần liên kết lại?',
                 zhengZaiShiBie: 'Đang xác thực',
-                zhengZaiShangChuan: 'Đang tải lên'
+                zhengZaiShangChuan: 'Đang tải lên',
+                wait: 'Đang tải ảnh, vui lòng chờ'
             },
             user: {
                 regist: "Tạo tài khoản",

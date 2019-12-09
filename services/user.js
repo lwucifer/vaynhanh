@@ -561,6 +561,23 @@ const profitAmount = function (input, success, error, opt) {
     util.request(apis.USER_PROFITAMOUNT, params, success, error, opt);
 }
 
+const getProductTime = function (input, success, error, opt) {
+    var that = this;
+
+    if (util.isEmpty(input.userId)) {
+        util.toast(i18n.t('tip.canShuCuoWu') + " userId");
+        return;
+    }
+
+    let params = {
+        data: {
+            userId: input.userId,
+        }
+    }
+
+    util.request(apis.PRODUCT_TIME, params, success, error, opt);
+}
+
 
 export default {
     get,
@@ -578,5 +595,6 @@ export default {
     saveBank,
     saveBank2,
     canRebindingBank,
-    profitAmount
+    profitAmount,
+    getProductTime
 }

@@ -8,8 +8,11 @@
             </view>
             <view class="input-row input-flex border">
                 <label class="title">{{$t('bus.jieKuanShiChang')}}</label>
-                <m-input type="number" v-model="timeLimit" :placeholder="$t('tip.qingShuRu')+$t('bus.jieKuanShiChang')" @input="onAmountCostChange"></m-input>
-                <label class="rfix">({{$t('bus.timesu')}})</label>
+                <span v-if="!time15" class="btn-select active" >8 {{$t('bus.timesu')}}</span>
+                <span v-if="!time15" class="btn-select" >15 {{$t('bus.timesu')}}</span>
+
+                <button v-if="time15" class="btn-select active" @click="onTimeSet('8')">8 {{$t('bus.timesu')}}</button>
+                <button v-if="time15" class="btn-select" @click="onTimeSet('15')">15 {{$t('bus.timesu')}}</button>
             </view>
             <view class="input-row input-flex border">
                 <label class="title">{{$t('bus.fuWuFei')}}</label>
@@ -97,7 +100,8 @@
                 repTotal:'0',
                 bankName: '',
                 bankCard: '',
-                lastInput: (new Date())
+                lastInput: (new Date()),
+                time15: false
             }
         },
         components: {
@@ -110,6 +114,12 @@
                 var that = this;
                 that.amount = util.toMoney(that.borrow)+'';
                 that.amountCost();
+                userService.getProductTime({ userId: that.userId }, function (obj, msg, code) {
+                    that.timeLimit = obj['productTime'];
+                    if (obj['productTime'] == '15') {
+                        that.time15 = true;
+                    }
+                })
                 userService.getBanks({ userId: that.userId }, function (obj, msg, code) {
                     that.bankName = obj["bank"];
                     that.bankCard = obj["cardNo"];
@@ -188,4 +198,23 @@
 </script>
 
 <style>
+    .btn-select.active {
+        border-color: #2FC25B;
+        color: #999;
+        background-color: #f8f8f8;
+    }
+    .btn-select:after {
+        content: none;
+    }
+    .btn-select {
+        border: 1px solid #c8c7cc;
+        border-radius: 4px;
+        color: #c8c7cc;
+        font-size: 13px;
+        line-height: 2;
+        background: transparent;
+        margin: 0 30px 0 0;
+        padding: 0 15px;
+        display: inline-block;
+    }
 </style>

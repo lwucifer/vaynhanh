@@ -100,7 +100,7 @@ button {
 
     .text-flex-center { display: flex; justify-content: center; }
 
-    button.primary { background-color: #FF9700; }
+    button.primary { background-color: #398724; }
 
     .m-code-view.rfix { width: 240upx; }
 
