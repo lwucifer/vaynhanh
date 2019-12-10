@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div id="question_wraper">
-                <div class="content">
+                <div>
                     <h3 class="em_1 _cursor" @tap="active = active === 99 ? 0 : 99" :class="active === 99 ? 'active' : ''">
                         <span class="_inline_block _wraper"><img class="_hidden v_center" src="../../../static/img/support/top.png" width="100%"><img class="v_center" src="../../../static/img/support/right.png" width="60%"></span> <span class="_333 v_center"> Vay tiền online là gì?</span>
                     </h3>
@@ -162,7 +162,7 @@
         padding-left: 15px;
         padding-bottom: 15px;
         img {
-            width: 45px;
+            width: 40px;
             margin-right: 5px;
         }
         a {
@@ -176,12 +176,14 @@
     h3 {
         border-bottom: 1px solid #ddd;
         display: flex;
-        padding: 12px 0;
+        padding: 5px 0;
         align-items: center;
-        color: #666;
+        color: #555;
         ._wraper {
-            display: inline-block;
-            min-width: 30px;
+            display: flex;
+            min-width: 25px;
+            height: 25px;
+            align-items: center;
         }
         + div {
             border-bottom: 1px solid #ddd;
@@ -192,10 +194,10 @@
             color: #555;
         }
         img {
-            width: 20px;
+            width: 15px;
             height: auto;
             + img {
-                height: 20px;
+                height: 15px;
                 width: auto;
             }
         }
