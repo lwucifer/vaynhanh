@@ -162,7 +162,9 @@
             },
             amountCost(callback) {
                 var that = this;
+                console.log(that.amount);
                 that.amount = util.toMoney(that.amount);
+                console.log(that.amount);
                 if (util.isEmpty(that.amountGet()) || util.isEmpty(that.timeLimit)) {
                     that.repAmount = '0';
                     that.interestfee ='0';
@@ -182,7 +184,7 @@
             },
             amountGet() {
                 var that = this;
-                return (that.amount + '').replace(/,/g, "");
+                return (that.amount + '').replace(/\./g,'');
             }
         },
         onLoad: function (option) {

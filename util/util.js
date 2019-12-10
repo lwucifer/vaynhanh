@@ -356,7 +356,7 @@ _util.toMoney=function(obj, num) {
     num = num > 0 && num <= 20 ? num : 0;
 
     if (!that.isEmpty(obj)) {
-        obj = (obj+'').replace(/\,/g, "") + "";
+        obj = (obj+'').replace(/\./g, "") + "";
     }
 
     if (num > 0) {

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "cnpm init -y\r  cnpm install @dcloudio/uni-ui\r  cnpm install vue-i18n\r  cnpm install blueimp-md5\r  cnpm install google-maps",
   "main": "main.js",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
