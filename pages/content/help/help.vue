@@ -3,7 +3,7 @@
         <div class="kdlc_mobile_wraper container">
             <div class="row">
                 <div class="help col-6" id="wxin">
-                    <a title="Vay tiền nhanh Vay nhanh" href="https://www.facebook.com/VayTienDi.VT">
+                    <a title="Vay tiền nhanh Vay nhanh" href="https://www.facebook.com/vaynhanh.tc">
                         <img src="../../../static/img/support/help-fb.png" class="img-responsive support-icon">
                         <span>Hỗ trợ qua Facebook</span>
                     </a>
@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div class="help col-6">
-                    <a href="https://m.me/VayTienDi.VT" rel="noopener noreferrer">
+                    <a href="https://m.me/vaynhanh.tc" rel="noopener noreferrer">
                         <img src="../../../static/img/support/messenger1.png" class="img-responsive support-icon">
                         <span>Hỗ trợ qua Messenger</span>
                     </a>
