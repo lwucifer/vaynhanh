@@ -233,6 +233,36 @@
       "style": {
         "navigationBarTitleText": "Đang tải..."
       }
+    },
+    {
+      "path": "pages/main/appmain",
+      "style": {
+        "navigationBarTitleText": "Trang chủ"
+      }
+    },
+    {
+      "path": "pages/business/repayment/apprepayment",
+      "style": {
+        "navigationBarTitleText": "Thanh toán"
+      }
+    },
+    {
+      "path": "pages/account/appaccount",
+      "style": {
+        "navigationBarTitleText": "Tài khoản"
+      }
+    },
+    {
+      "path": "pages/account/login/applogin",
+      "style": {
+        "navigationBarTitleText": "Đăng nhập"
+      }
+    },
+    {
+      "path": "pages/account/reg/appreg",
+      "style": {
+        "navigationBarTitleText": "Tạo tài khoản"
+      }
     }
   ],
   "tabBar": {

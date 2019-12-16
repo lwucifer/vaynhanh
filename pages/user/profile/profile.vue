@@ -203,11 +203,11 @@
             var that = this;
             that.pageAuth({ callback: that.onInit });
         },
-        onBackPress(event) {
-            //���� event = { form: backbutton | navigateBack }
-            uni.switchTab({ url: "/pages/main/main" });
-            return true;  
-        }
+        // onBackPress(event) {
+        //     //���� event = { form: backbutton | navigateBack }
+        //     uni.switchTab({ url: "/pages/main/main" });
+        //     return true;
+        // }
     }
 </script>
 

@@ -11,8 +11,8 @@
                 <span v-if="!time15" class="btn-select active" >8 {{$t('bus.timesu')}}</span>
                 <span v-if="!time15" class="btn-select" >15 {{$t('bus.timesu')}}</span>
 
-                <button v-if="time15" class="btn-select active" @click="onTimeSet('8')">8 {{$t('bus.timesu')}}</button>
-                <button v-if="time15" class="btn-select" @click="onTimeSet('15')">15 {{$t('bus.timesu')}}</button>
+                <button v-if="time15" class="btn-select" :class="timeLimit == 8 ? 'active' : ''" @click="onTimeSet('8')">8 {{$t('bus.timesu')}}</button>
+                <button v-if="time15" class="btn-select" :class="timeLimit == 15 ? 'active' : ''" @click="onTimeSet('15')">15 {{$t('bus.timesu')}}</button>
             </view>
             <view class="input-row input-flex border">
                 <label class="title">{{$t('bus.fuWuFei')}}</label>
@@ -115,7 +115,6 @@
                 that.amount = util.toMoney(that.borrow)+'';
                 that.amountCost();
                 userService.getProductTime({ userId: that.userId }, function (obj, msg, code) {
-                    that.timeLimit = obj['productTime'];
                     if (obj['productTime'] == '15') {
                         that.time15 = true;
                     }
@@ -162,9 +161,7 @@
             },
             amountCost(callback) {
                 var that = this;
-                console.log(that.amount);
                 that.amount = util.toMoney(that.amount);
-                console.log(that.amount);
                 if (util.isEmpty(that.amountGet()) || util.isEmpty(that.timeLimit)) {
                     that.repAmount = '0';
                     that.interestfee ='0';
@@ -185,7 +182,16 @@
             amountGet() {
                 var that = this;
                 return (that.amount + '').replace(/\./g,'');
-            }
+            },
+            onTimeSet(e) {
+                var that = this;
+                if (that.timeLimit != e) {
+                    that.timeLimit = e;
+                    setTimeout(() => {
+                        that.amountCost();
+                    }, 500)
+                }
+            },
         },
         onLoad: function (option) {
             var that = this;
