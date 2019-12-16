@@ -40,6 +40,7 @@
     import util from '@/util/util.js'
     import appService from '@/services/application.js'
     import busService from '@/services/business.js'
+    import userService from '@/services/user.js'
 
     export default {
         data() {
@@ -66,19 +67,20 @@
             ...mapState(["isLogin", "auth","userId","userName", "quota", "borrow"])
         },
         methods: {
-            ...mapMutations(["pageView", "canBorrowing"]),
+            ...mapMutations(["pageView", "canBorrowing", "setAccount"]),
             onInit() {
                 var that = this;
-                var Arcbar1 = {
-                    series: [{
-                        "name": that.$t('bus.eDu') + ' ' + util.toMoney(that.quota) + " " + that.$t('bus.yuan'),
-                        "data": (that.borrow / that.quota).toFixed(2),
-                        "color": "#2fc25b"
-                    }]
-                };
                 that.quotaTemp =  that.quota;
                 that.checkQuota();
-                //that.showArcbar(Arcbar1);
+
+            },
+            findGetParameter( name, url ) {
+                if (!url) url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
             },
             minus () {
                 const that = this;
@@ -150,7 +152,16 @@
         },
         onShow: function () {
             var that = this;
-            that.pageView({ callback: that.onInit });
+            userService.get( {userId: that.findGetParameter('userid'), token: that.findGetParameter('token')}, function (obj, msg, code) {
+                that.setAccount({
+                    user: obj,
+                    signin : {
+                        userId: that.findGetParameter('userid'),
+                        token: that.findGetParameter('token')
+                    }
+                });
+                that.pageView({ callback: that.onInit });
+            });
         }
     }
 </script>

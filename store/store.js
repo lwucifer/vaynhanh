@@ -72,7 +72,7 @@ let _pageInit = function (state, input) {
 }
 
 let _loginSet = function (state, signin, user, callback) {
-
+    console.log(signin, user)
     if (util.isEmpty(signin) || util.isEmpty(user)) {
         _loginClear(state);
         return;
@@ -262,6 +262,9 @@ let store = new Vuex.Store({
                 state.auth = obj;
                 _inputCallback(input)(obj);
             });
+        },
+        setAccount (state, input) {
+            _loginSet(state, input.signin, input.user);
         }
     }
 })

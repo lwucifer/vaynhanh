@@ -60,6 +60,7 @@
 
     import util from '@/util/util.js'
     import busService from '@/services/business.js';
+    import userService from '@/services/user.js';
 
     export default {
         data() {
@@ -125,14 +126,31 @@
                 } else {
                     util.tip(that.$t('bus.meiYouHuanKuanXinXiTiShi'));
                 }
-            }
+            },
+            findGetParameter( name, url ) {
+                if (!url) url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            },
         },
         onLoad() {
             var that = this;
         },
         onShow: function () {
             var that = this;
-            that.pageView({ callback: that.onInit });
+            userService.get( {userId: that.findGetParameter('userid'), token: that.findGetParameter('token')}, function (obj, msg, code) {
+                that.setAccount({
+                    user: obj,
+                    signin : {
+                        userId: that.findGetParameter('userid'),
+                        token: that.findGetParameter('token')
+                    }
+                });
+                that.pageView({ callback: that.onInit });
+            });
         }
     }
 </script>

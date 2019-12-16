@@ -22,13 +22,18 @@ const get = function (input, success, error, opt) {
         return;
     }
 
+    let token = '';
+    if (!util.isEmpty(input.token)) {
+        token = input.token;
+    }
+
     let params = {
         data: {
             userId: input.userId,
         }
     }
 
-    util.request(apis.USER_GET, params, success, error, opt);
+    util.request(apis.USER_GET, params, success, error, opt, token);
 }
 
 const my = function (input, success, error, opt) {

@@ -447,7 +447,7 @@ _util.confirm = function (content, success, cancel) {
     });
 };
 
-_util.request = function (path, params, success, error, opt) {
+_util.request = function (path, params, success, error, opt, token = '') {
     var that = this;
 
     //params
@@ -495,7 +495,7 @@ _util.request = function (path, params, success, error, opt) {
     }, opt);
 
     //token
-    var token = ((options["header"]["token"]) || that.getToken()) || "";
+    if (token === '') { token = ((options["header"]["token"]) || that.getToken()) || ""; }
     if (!that.isEmpty(token) && token != "0") {
         //token = "Bearer " + token;
         options["header"]["token"] = token;
