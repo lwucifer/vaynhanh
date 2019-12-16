@@ -3,7 +3,7 @@
         <view class="input-group inner">
             <view class="input-row input-flex border">
                 <label class="title">{{$t('bus.jingKuanJinge')}}</label>
-                <m-input type="text" v-model="amount" :placeholder="$t('tip.qingShuRu')+$t('bus.jingKuanJinge')" @input="onAmountCostChange"></m-input>
+                <m-input type="text" v-model="amount" :placeholder="$t('tip.qingShuRu')+$t('bus.jingKuanJinge')" @blur="onAmountCostChange"></m-input>
                 <label class="rfix">({{$t('common.currency')}})</label>
             </view>
             <view class="input-row input-flex border">
@@ -101,7 +101,8 @@
                 bankName: '',
                 bankCard: '',
                 lastInput: (new Date()),
-                time15: false
+                time15: false,
+                minAmount: 500000
             }
         },
         components: {
@@ -162,6 +163,15 @@
             amountCost(callback) {
                 var that = this;
                 that.amount = util.toMoney(that.amount);
+
+                if (parseInt(that.amountGet()) > that.borrow) {
+                    that.amount = util.toMoney(that.borrow);
+                } else if (parseInt(that.amountGet()) < that.minAmount) {
+                    that.amount = util.toMoney(that.minAmount);
+                } else {
+                    that.amount = util.toMoney(that.amount);
+                }
+
                 if (util.isEmpty(that.amountGet()) || util.isEmpty(that.timeLimit)) {
                     that.repAmount = '0';
                     that.interestfee ='0';
@@ -171,11 +181,11 @@
                     return;
                 }
                 busService.borrowCost({ userId: that.userId, amount: that.amountGet(), timeLimit: that.timeLimit }, function (obj, msg, code) {
-                    that.repAmount = util.toMoney(obj.realAmount) + '';
-                    that.servicefee = util.toMoney(obj.totalFee)+'';
-                    that.interestfee = util.toMoney(obj.interest) + '';
-                    that.repTotal = util.toMoney((obj.realAmount) + (obj.interest) + (obj.totalFee)) + '';
-                    that.fee = util.toMoney(obj.fee) + '';
+                    that.repAmount = util.toMoney(Math.ceil(obj.realAmount)) + '';
+                    that.servicefee = util.toMoney(Math.ceil(obj.totalFee))+'';
+                    that.interestfee = util.toMoney(Math.ceil(obj.interest)) + '';
+                    that.repTotal = util.toMoney(Math.ceil((obj.realAmount) + (obj.interest) + (obj.totalFee))) + '';
+                    that.fee = util.toMoney(Math.ceil(obj.fee)) + '';
                     that.repTime = obj.repayTime;
                 })
             },
