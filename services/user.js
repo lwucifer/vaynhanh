@@ -181,6 +181,7 @@ const saveFaceauth = function (input, success, error, opt) {
     }
 
     util.upload("/act/faceauth/pictureReceptionH5.htm?userId=" + input.userId, params, success, error, util.extend2({
+    // util.upload("/act/faceauth/pictureReception2.htm?userId=" + input.userId, params, success, error, util.extend2({
         name: input.name,
         filePath: input.file
     }, opt));

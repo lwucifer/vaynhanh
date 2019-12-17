@@ -8,24 +8,24 @@
                     </uni-list-item>
                 </view>
                 <view data-url="realname/face" data-type="face" @tap="onGoTo">
-                    <uni-list-item :title="$t('user.shiMingXingXi2')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
+                    <uni-list-item :title="$t('user.shiMingXingXi2')" show-extra-icon="true" :extra-icon="{type: 'image'}"
                                  :required="true" :note="face.descript" showArrow="false" showText="false" :text="face.status" :sub="$t('user.sub6')">
                     </uni-list-item>
                 </view>
                 <view data-url="member/member" data-type="member" @tap="onGoTo">
-                    <uni-list-item :title="$t('user.geRenXingXi')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
+                    <uni-list-item :title="$t('user.geRenXingXi')" show-extra-icon="true" :extra-icon="{type: 'list'}"
                                    :required="true" :note="member.descript" showArrow="true" showText="true" :text="member.status" :sub="$t('user.sub2')"></uni-list-item>
                 </view>
                 <view data-url="work/work" data-type="work" @tap="onGoTo">
-                    <uni-list-item :title="$t('user.gongZuoXingXi')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
+                    <uni-list-item :title="$t('user.gongZuoXingXi')" show-extra-icon="true" :extra-icon="{type: 'email-filled'}"
                                    :required="true" :note="work.descript" showArrow="true" showText="true" :text="work.status" :sub="$t('user.sub3')"></uni-list-item>
                 </view>
                 <view data-url="bank/edit" data-type="bank" @tap="onGoTo">
-                    <uni-list-item :title="$t('user.yingHangXinXi')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
+                    <uni-list-item :title="$t('user.yingHangXinXi')" show-extra-icon="true" :extra-icon="{type: 'scan'}"
                                    :required="true" :note="bank.descript" showArrow="true" showText="true" :text="bank.status" :sub="$t('user.sub4')"></uni-list-item>
                 </view>
                 <view :data-url="mobileUrl" data-type="mobile" @tap="onGoTo">
-                    <uni-list-item :title="$t('user.yunYingShangXingXi')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
+                    <uni-list-item :title="$t('user.yunYingShangXingXi')" show-extra-icon="true" :extra-icon="{type: 'phone-filled'}"
                                    :required="true" :note="mobile.descript" showArrow="true" showText="true" :text="mobile.status" :sub="$t('user.sub5')"></uni-list-item>
                 </view>
                 <!--<view data-url="fackbook/fackbook" data-type="fackbook" @tap="onGoTo">

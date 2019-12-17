@@ -9,7 +9,7 @@
                     </a>
                 </div>
                 <div class=" help col-6" id="help_zalo">
-                    <a title="Vay tiền nhanh Vay nhanh" href="#">
+                    <a title="Vay tiền nhanh Vay nhanh" href="https://zalo.me/1903420042896326050">
                         <img src="../../../static/img/support/help-zl.png" class="img-responsive support-icon">
                         <span>Hỗ trợ qua Zalo</span>
                     </a>

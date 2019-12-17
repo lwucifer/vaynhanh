@@ -12,12 +12,18 @@
                     <img src="../../static/img/help.png"/>
                 </uni-list-item>
             </navigator>
-            <a target="_blank" href="https://play.google.com/store/apps/details?id=vayngay.vaytiennhanhonline" class="btn-download">
-                <img src="../../static/img/android.png"/>
-            </a>
-            <a href="../../static/shortcut/Vaynhanh.mobileconfig" class="btn-download">
-                <img src="../../static/img/apple.png"/>
-            </a>
+            <div class="left">
+
+                <div>
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=vayngay.vaytiennhanhonline" class="btn-download">
+                        <img src="../../static/img/android.png"/>
+                    </a>
+                    <a href="../../static/shortcut/Vaynhanh.mobileconfig" class="btn-download">
+                        <img src="../../static/img/apple.png"/>
+                    </a>
+                </div>
+                <p>Tải xuống</p>
+            </div>
             <img class="img-view" src="../../static/img/bg.png"/>
             <div class="bottom">
                 <view class="tools d-flex">
@@ -161,17 +167,29 @@
 </script>
 
 <style lang="scss">
-    .btn-download {
+    .left {
         position: absolute;
-        left: 20px;
-        top: 13px;
-        width: 1.25rem;
-        + .btn-download {
-            left: 55px;
+        left: 15px;
+        top: 5px;
+        color: #fefefe;
+        >div {
+            display: flex;
+        }
+        .btn-download {
+            display: inline-block;
+            width: 1.5rem;
+            + .btn-download {
+                margin-left: 10px;
+            }
         }
         img {
             width: 100%;
             height: auto;
+        }
+        p {
+            display: block;
+            width: 100%;
+            margin-top: 3px;
         }
     }
     .d-flex {
