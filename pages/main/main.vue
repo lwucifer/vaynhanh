@@ -12,6 +12,12 @@
                     <img src="../../static/img/help.png"/>
                 </uni-list-item>
             </navigator>
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=vayngay.vaytiennhanhonline" class="btn-download">
+                <img src="../../static/img/android.png"/>
+            </a>
+            <a href="../../static/shortcut/Vaynhanh.mobileconfig" class="btn-download">
+                <img src="../../static/img/apple.png"/>
+            </a>
             <img class="img-view" src="../../static/img/bg.png"/>
             <div class="bottom">
                 <view class="tools d-flex">
@@ -22,7 +28,6 @@
                 <button type="primary" class="primary apply btn" @tap="onBorrowing">{{ $t('common.apply') }}</button>
             </div>
         </view>
-        <!--        <a href="../../static/shortcut/Vaynhanh.mobileconfig" class="btn">link link</a>-->
         <!--        <view><uni-notice-bar show-icon="true" single="true" :text="notice"></uni-notice-bar></view>-->
     </view>
 </template>
@@ -156,6 +161,19 @@
 </script>
 
 <style lang="scss">
+    .btn-download {
+        position: absolute;
+        left: 20px;
+        top: 13px;
+        width: 1.25rem;
+        + .btn-download {
+            left: 55px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
     .d-flex {
         display: flex;
     }
