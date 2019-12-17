@@ -2,26 +2,6 @@
     <view class="body">
         <view class="input-group inner">
             <view class="input-row border input-flex">
-                <label class="title">{{$t('user.geRenZhengJian')}}</label>
-                <view class="flex1 input-flex" @tap="onFrontSelect">
-                    <image class="card" src="../../../../static/img/card_front.png" mode="center"></image>
-                    <label class="inner">{{frontImg==''?$t('common.front'):$t('common.hasSelect')}}</label>
-                </view>
-                <view class="flex1 input-flex" @tap="onReverseSelect">
-                    <image class="card" src="../../../../static/img/card_front.png" mode="center"></image>
-                    <label class="inner">{{backImg==''?$t('common.reverse'):$t('common.hasSelect')}}</label>
-                </view>
-            </view>
-            <view class="input-row border input-flex">
-                <label class="title long">{{$t('user.renLianShiBie')}}</label>
-                <view class="flex1  input-flex" @tap="onFaceSelect">
-                    <view class="input-flex">
-                        <uni-icons type="scan"></uni-icons>
-                    </view>
-                    <label class="inner">{{facePath==''?'':$t('common.hasSelect')}}</label>
-                </view>
-            </view>
-            <view class="input-row border input-flex">
                 <label class="title">{{$t('user.zhengShiXingMing')}}</label>
                 <m-input type="text" :placeholder="$t('tip.qingShuRuZhengShiXingMing')" v-model="name"></m-input>
             </view>
@@ -83,13 +63,6 @@
                 sexIndex: 0,
                 birthday: (nowDt.getFullYear() + "-" + (nowDt.getMonth() + 1) + "-" + nowDt.getDate()),
                 btnDisabled: true,
-                faceStatus: '',
-                frontImg: "",
-                backImg: "",
-                faceImg: "",
-                facePath: "",
-                loadFront: false,
-                loadBack: false,
             }
         },
         components: {
@@ -112,7 +85,7 @@
                 }
 
                 if (util.isAuth(that.auth.idState) && util.isAuth(that.auth.realNameState)) {
-                    util.confirm(that.$t('user.zhengShiXingMing') + that.$t('tip.yiRenZhengShiFouChongXiuRenZheng'), function () {
+                    util.confirm(that.$t('user.zhengShiXingMing') + ' ' + that.$t('tip.yiRenZhengShiFouChongXiuRenZheng'), function () {
                         _load();
                     }, function () {
                         uni.redirectTo({
@@ -125,20 +98,7 @@
             },
             onApply() {
                 var that = this;
-
-                var fackCallback = function (obj, msg, code) {
-                    that.saveFaceAuth(function (obj2,msg2,code) {
-                        util.tip((msg2||msg) || (that.$t('common.apply')), {
-                            over() {
-                                uni.redirectTo({
-                                    url: '../profile'
-                                });
-                            }
-                        });
-                    });
-                }
-
-                that.saveRealName(fackCallback);
+                that.saveRealName();
             },
             onBirthdayShow(e) {
                 var that = this;
@@ -157,85 +117,6 @@
                 that.sexIndex = parseInt(e.value[0]);
                 that.sex = that.sexs[that.sexIndex]["label"];
             },
-            onFrontSelect() {
-                var that = this;
-                uni.chooseImage({
-                    count: 1,
-                    sizeType: ['compressed'],
-                    sourceType: ['camera'],
-                    success: function (res) {
-                        const filePath = res.tempFilePaths[0];
-                        var input = {
-                            userId: that.userId,
-                            name: "frontImg",
-                            file: filePath,
-                            filePath: ""
-                        };
-                        that.loadFront = true;
-                        userService.saveFaceauth(input, function (obj, msg, code) {
-                            that.frontImg = JSON.stringify(msg);
-                            that.loadFront = false;
-                        });
-                    }
-                });
-            },
-            onReverseSelect() {
-                var that = this;
-                if (that.loadFront) {
-                    util.tip(that.$t('tip.wait'))
-                    return;
-                }
-                if (util.isEmpty(that.frontImg)) {
-                    util.tip(that.$t('tip.qingShangChuanZhengJianZhengMianZhaoPian'))
-                    return;
-                }
-                uni.chooseImage({
-                    count: 1,
-                    sizeType: ['compressed'],
-                    sourceType: ['camera'],
-                    success: function (chooseImageRes) {
-                        const filePath = chooseImageRes.tempFilePaths[0];
-                        var input = {
-                            userId: that.userId,
-                            name: "backImg",
-                            file: filePath,
-                            filePath: "{'filePath':[" + that.frontImg + "]}"
-                        };
-                        that.loadBack = true;
-                        userService.saveFaceauth(input, function (obj, msg, code) {
-                            that.backImg = JSON.stringify(msg);
-                            that.loadBack = false;
-                        });
-                    }
-                });
-            },
-            onFaceSelect() {
-                var that = this;
-
-                if (that.loadBack) {
-                    util.tip(that.$t('tip.wait'))
-                    return;
-                }
-
-                if (util.isEmpty(that.frontImg)) {
-                    util.tip(that.$t('tip.qingShangChuanZhengJianZhengMianZhaoPian'))
-                    return;
-                }
-
-                if (util.isEmpty(that.backImg)) {
-                    util.tip(that.$t('tip.qingShangChuanZhengJianFanMianZhaoPian'))
-                    return;
-                }
-
-                uni.chooseImage({
-                    count: 1,
-                    sizeType: ['compressed'],
-                    sourceType: ['camera'],
-                    success: function (chooseImageRes) {
-                        that.facePath = chooseImageRes.tempFilePaths[0];
-                    }
-                });
-            },
             getAuth(callback) {
                 var that = this;
                 userService.auth({ userId: that.userId }, function (obj, msg, code) {
@@ -245,38 +126,16 @@
                     }
                 })
             },
-            saveFaceAuth(callback) {
-                var that = this;
-                if (util.isEmpty(that.frontImg)) {
-                    util.tip(that.$t('tip.qingShangChuanZhengJianZhengMianZhaoPian'))
-                    return;
-                }
-                if (util.isEmpty(that.backImg)) {
-                    util.tip(that.$t('tip.qingShangChuanZhengJianFanMianZhaoPian'))
-                    return;
-                }
-                var input = {
-                    userId: that.userId,
-                    name: "sdkImg",
-                    file: that.facePath,
-                    filePath: "{'filePath':[" + that.frontImg + "," + that.backImg + "]}"
-                };
-
-                userService.saveFaceauth(input, function (obj, msg, code) {
-                    that.faceImg = JSON.stringify(msg);
-                    if (util.isFunction(callback)) {
-                        callback(obj);
-                    }
-                }, null, {
-                        loading: that.$t('tip.zhengZaiShiBie')
-                    });
-            },
-            saveRealName(callback) {
+            saveRealName() {
                 var that = this;
                 userService.saveRealname({ ...that.$data, userId: that.userId }, function (obj, msg, code) {
-                    if (util.isFunction(callback)) {
-                        callback(obj, msg, code);
-                    }
+                    util.tip(msg || (that.$t('common.certitrue')), {
+                        over() {
+                            uni.redirectTo({
+                                url: '../profile'
+                            });
+                        }
+                    });
                 });
             }
         },

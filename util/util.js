@@ -822,4 +822,13 @@ _util.borrowStatusText = function (status) {
 
 _util.getClient = function () { return "10"; }
 
+_util.getParam = function ( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( url );
+    return results == null ? null : results[1];
+}
+
 export default _util; 

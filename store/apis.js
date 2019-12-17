@@ -19,6 +19,9 @@ export default {
     USER_BANKSAVE2: '/act/mine/bankCard/baoKimAuthSign.htm', //银行卡认证2
     USER_PROFITAMOUNT: '/act/mine/profitAmount/find.htm', //我的奖金
 
+    USER_FACESTATE: '/act/faceauth/pictureReceptionH5.htm',
+    USER_REALNAMESTATE: '/act/mine/userInfo/realName/saveOrUpdateRealNameState.htm',
+
     //act/mine/profitAmount/find.htm   我的奖金
     //act / user / inviteList.htm     邀请记录
 

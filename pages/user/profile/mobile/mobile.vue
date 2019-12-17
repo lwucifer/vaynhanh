@@ -1,5 +1,10 @@
 <template>
     <view>
+        <navigator url="../../../content/help/help?item=12" class="icon-help">
+            <uni-list-item :title="$t('common.helper')" show-extra-icon="true" :extra-icon="{type: 'help'}">
+                <img src="../../../../static/img/help.png"/>
+            </uni-list-item>
+        </navigator>
         <web-view :src="url"></web-view>
     </view>
 </template>
@@ -49,6 +54,17 @@
         }
     }
 </script>
-<style>
+<style lang="scss">
+    .icon-help {
+        position: fixed;
+        top: 9px;
+        right: 10px;
+        z-index: 9999;
+        width: 25px;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
 </style>
 

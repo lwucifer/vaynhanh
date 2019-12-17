@@ -57,6 +57,20 @@
                     <div class="_hidden padding info em__9">
                         <p>Sau khi xét duyệt thông qua, chúng tôi sẽ giải ngân luôn và tiền giải ngân sẽ đến tài khoản của bạn ngay lập tức; Nếu vào các ngày nghỉ lễ thì tiền sẽ được giải ngân vào ngày làm việc sau đó.</p>
                     </div>
+                    <h3 class="em_1 _cursor" @tap="active = active === 12 ? 0 : 12" :class="active === 12 ? 'active' : ''" id="#mobile">
+                        <span class="_inline_block _wraper">
+                            <img class="_hidden v_center" src="../../../static/img/support/top.png" width="100%">
+                            <img class="v_center" src="../../../static/img/support/right.png" width="60%">
+                        </span> <span class="_333 v_center">Thao tác bước xác thực nhà mạng như thế nào?</span>
+                    </h3>
+                    <div class="_hidden padding info em__9">
+                        <p>Bạn vui lòng xem ảnh hướng dẫn và thao tác theo các bước:</p>
+                        <br/>
+                        <img class="v_center" src="../../../static/img/support/help_phone_1.jpg" width="100%">
+                        <img class="v_center" src="../../../static/img/support/help_phone_2.jpg" width="100%">
+                        <img class="v_center" src="../../../static/img/support/help_phone_3.jpg" width="100%">
+                        <img class="v_center" src="../../../static/img/support/help_phone_4.jpg" width="100%">
+                    </div>
                     <h3 class="em_1 _cursor" @tap="active = active === 4 ? 0 : 4" :class="active === 4 ? 'active' : ''">
                         <span class="_inline_block _wraper"><img class="_hidden v_center" src="../../../static/img/support/top.png" width="100%"><img class="v_center" src="../../../static/img/support/right.png" width="60%"></span> <span class="_333 v_center">Có những phương thức thanh toán nào?</span>
                     </h3>
@@ -112,6 +126,8 @@
 </template>
 
 <script>
+    import util from '@/util/util.js'
+
     export default {
         data() {
             return {
@@ -119,6 +135,10 @@
             }
         },
         methods: {
+            onInit() {},
+        },
+        onLoad: function () {
+            this.active = parseInt(util.getParam('item'));
         }
     }
 </script>

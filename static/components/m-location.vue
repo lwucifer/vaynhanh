@@ -158,6 +158,8 @@
                             })
                         }
                         // #endif
+                        //this.$router.back()
+                        util.tip(that.$t('tip.loactionMsg'));
                     }
                 })
             },
@@ -205,7 +207,7 @@
                 }
                 // #endif
                 // #ifdef MP-WEIXIN || MP-TOUTIAO || MP-QQ
-                let status = await that.__location_getSetting();
+                status = await that.__location_getSetting();
                 if (status === 2) {
                     that.__location_showConfirm();
                     return;

@@ -105,7 +105,8 @@ const langs = {
                 yingHangKaYiBangDingShiFouChongXiuRenZheng: 'Đã liên kết tài khoản ngân hàng, cần liên kết lại?',
                 zhengZaiShiBie: 'Đang xác thực',
                 zhengZaiShangChuan: 'Đang tải lên',
-                wait: 'Đang tải ảnh, vui lòng chờ'
+                wait: 'Đang tải ảnh, vui lòng chờ',
+                loactionMsg: 'Vui lòng cho phép xác thực vị trí của bạn'
             },
             user: {
                 regist: "Tạo tài khoản",
@@ -139,6 +140,7 @@ const langs = {
                 geRenZhengJian: 'Ảnh chụp CMT',
                 renLianShiBie: 'Nhận dạng khuôn mặt',
                 shiMingXingXi: 'Thông tin xác thực',
+                shiMingXingXi2: 'Xác thực ảnh',
                 geRenXingXi: 'Thông tin cá nhân',
                 youXiangDiZhi: 'Mail',
                 zuiGaoXueLi: 'Học vấn cao nhất',
@@ -173,6 +175,7 @@ const langs = {
                 yingHangKaoBangDingMiaoShu2: '2. Nếu liên kết lại thẻ, thẻ mới sẽ là thẻ nhận tiền giải ngân.',
                 yingHangKaoBangDingMiaoShu3: '3. Trong quá trình xin vay, bạn không thể liên kết lại thẻ.',
                 sub1: 'Tiến hành xác thực danh tính',
+                sub6: 'Tiến hành xác thực ảnh',
                 sub2: 'Vui lòng hoàn thiện thông tin cá nhân',
                 sub3: 'Để chúng tôi biết bạn đang làm gì',
                 sub4: 'Chúng tối sẽ giải ngân đến số thẻ ngân hàng này',

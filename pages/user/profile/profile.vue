@@ -7,6 +7,11 @@
                                  :required="true" :note="realname.descript" showArrow="false" showText="false" :text="realname.status" :sub="$t('user.sub1')">
                     </uni-list-item>
                 </view>
+                <view data-url="realname/face" data-type="face" @tap="onGoTo">
+                    <uni-list-item :title="$t('user.shiMingXingXi2')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
+                                 :required="true" :note="face.descript" showArrow="false" showText="false" :text="face.status" :sub="$t('user.sub6')">
+                    </uni-list-item>
+                </view>
                 <view data-url="member/member" data-type="member" @tap="onGoTo">
                     <uni-list-item :title="$t('user.geRenXingXi')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
                                    :required="true" :note="member.descript" showArrow="true" showText="true" :text="member.status" :sub="$t('user.sub2')"></uni-list-item>
@@ -56,6 +61,7 @@
         data() {
             return {
                 realname: { status: "", descript: "" },
+                face: { status: "", descript: "" },
                 member: { status: "", descript: "" },
                 work: { status: "", descript: "" },
                 bank: { status: "", descript: "" },
@@ -91,6 +97,7 @@
                 that.authen({
                     callback: function (obj) {
                         that.realname.status = util.getAuthText(obj.realNameState);
+                        that.face.status = util.getAuthText(obj.faceState);
                         that.member.status = util.getAuthText(obj.contactState);
                         that.work.status = util.getAuthText(obj.workInfoState);//
                         that.bank.status = util.getAuthText(obj.bankCardState);
@@ -170,7 +177,11 @@
                     case "realname":
                         authStatus(that.$t('user.shiMingXingXi'), that.auth.realNameState);
                         break;
+                    case "face":
+                        authStatus(that.$t('user.shiMingXingXi'), that.auth.faceState, that.$t('user.shiMingXingXi'), that.auth.realNameState);
+                        break;
                     case "member":
+                        //authStatus(that.$t('user.geRenXingXi'), that.auth.contactState, that.$t('user.shiMingXingXi'), that.auth.faceState);
                         authStatus(that.$t('user.geRenXingXi'), that.auth.contactState, that.$t('user.shiMingXingXi'), that.auth.realNameState);
                         break;
                     case "work":
@@ -193,6 +204,7 @@
         onLoad() {
             var that = this;
             that.realname.descript = "";
+            that.face.descript = "";
             that.member.descript = "";
             that.work.descript = "";
             that.bank.descript = "";

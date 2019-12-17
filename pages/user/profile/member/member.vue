@@ -26,7 +26,8 @@
             </view>
             <view class="input-row border">
                 <label class="title">{{$t('user.xianJuDiZhi')}}</label>
-                <m-input type="text" :placeholder="$t('tip.qingShuRu')+$t('user.xianJuDiZhi')" v-model="liveAddress"></m-input>
+                <m-input v-if="!location" type="text" :placeholder="$t('tip.qingShuRu')+$t('user.xianJuDiZhi')" v-model="liveAddress"></m-input>
+                <span v-if="location" class="input-flex flex1">{{liveAddress}}</span>
             </view>
             <view class="input-row border">
                 <label class="title auto"></label>
@@ -137,7 +138,7 @@
                 contactName: '',
                 contactPhone: '',
                 contactAddress: '',
-
+                location: false,
                 btnDisabled: false
             }
         },
@@ -200,7 +201,7 @@
             onApply() {
                 var that = this;
                 userService.saveMember({ ...that.$data, userId: that.userId }, function (obj, msg, code) {
-                    util.tip(msg || (that.$t('common.apply')), {
+                    util.tip(msg || (that.$t('common.certitrue')), {
                         over() {
                             uni.redirectTo({
                                 url: '../profile'
@@ -250,6 +251,7 @@
                 if (util.isEmpty(e)) {
                     return;
                 }
+                if(e["text"]) {that.location =  true}
                 that.liveAddress = e["text"] || "";
                 that.liveCoordinate = (e["latitude"] || "0") + ',' + (e["longitude"] || "0");
             }

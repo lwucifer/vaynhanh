@@ -180,7 +180,7 @@ const saveFaceauth = function (input, success, error, opt) {
         }
     }
 
-    util.upload("/act/faceauth/pictureReception2.htm?userId=" + input.userId, params, success, error, util.extend2({
+    util.upload("/act/faceauth/pictureReceptionH5.htm?userId=" + input.userId, params, success, error, util.extend2({
         name: input.name,
         filePath: input.file
     }, opt));
@@ -227,7 +227,7 @@ const saveRealname = function (input, success, error, opt) {
         return;
     }
 
-    if (util.isEmpty(input.sex)) {
+    if (util.isEmpty(input.sex) || input.sex === i18n.t('tip.qingXuanZe')) {
         util.tip(i18n.t('tip.qingShuRuYouXiaoDe') + i18n.t('user.xingBie'));
         return;
     }
@@ -248,7 +248,7 @@ const saveRealname = function (input, success, error, opt) {
         method: 'POST'
     }
 
-    util.request(apis.USER_REALNAMESAVE, params, success, error, opt);
+    util.request(apis.USER_REALNAMESTATE, params, success, error, opt);
 }
 
 const saveMember = function (input, success, error, opt) {
@@ -260,6 +260,11 @@ const saveMember = function (input, success, error, opt) {
 
     if (util.isEmpty(input.userId)) {
         util.tip(i18n.t('tip.canShuCuoWu') + " userId");
+        return;
+    }
+
+    if (!input.location) {
+        util.tip(i18n.t('tip.loactionMsg'));
         return;
     }
 

@@ -95,7 +95,7 @@
                 var that = this;
 
                 userService.saveWork({ ...that.$data, userId: that.userId }, function (obj, msg, code) {
-                    util.tip(msg || (that.$t('common.apply')), {
+                    util.tip(msg || (that.$t('common.certitrue')), {
                         over() {
                             uni.redirectTo({
                                 url: '../profile'
