@@ -83,7 +83,7 @@
             ...mapState(["userId", "isLogin", "auth"])
         },
         methods: {
-            ...mapMutations(["pageView"]),
+            ...mapMutations(["pageView", "setAccount"]),
             onInit() {
                 var that = this;
                 if (that.isLogin) {
@@ -126,27 +126,21 @@
                 } else {
                     util.tip(that.$t('bus.meiYouHuanKuanXinXiTiShi'));
                 }
-            },
-            findGetParameter( name, url ) {
-                if (!url) url = location.href;
-                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-                var regexS = "[\\?&]"+name+"=([^&#]*)";
-                var regex = new RegExp( regexS );
-                var results = regex.exec( url );
-                return results == null ? null : results[1];
-            },
+            }
         },
         onLoad() {
             var that = this;
         },
         onShow: function () {
             var that = this;
-            userService.get( {userId: that.findGetParameter('userid'), token: that.findGetParameter('token')}, function (obj, msg, code) {
+            const id = util.getParam('userid');
+            const token = util.getParam('token');
+            userService.get( {userId: id, token: token}, function (obj, msg, code) {
                 that.setAccount({
                     user: obj,
                     signin : {
-                        userId: that.findGetParameter('userid'),
-                        token: that.findGetParameter('token')
+                        userId: id,
+                        token: token
                     }
                 });
                 that.pageView({ callback: that.onInit });
