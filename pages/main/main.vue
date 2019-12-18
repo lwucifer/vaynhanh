@@ -12,18 +12,6 @@
                     <img src="../../static/img/help.png"/>
                 </uni-list-item>
             </navigator>
-            <div class="left">
-
-                <div>
-                    <a target="_blank" href="https://play.google.com/store/apps/details?id=vayngay.vaytiennhanhonline" class="btn-download">
-                        <img src="../../static/img/android.png"/>
-                    </a>
-                    <a href="../../static/shortcut/Vaynhanh.mobileconfig" class="btn-download">
-                        <img src="../../static/img/apple.png"/>
-                    </a>
-                </div>
-                <p>Tải xuống</p>
-            </div>
             <img class="img-view" src="../../static/img/bg.png"/>
             <div class="bottom">
                 <view class="tools d-flex">
