@@ -186,7 +186,7 @@
                         authStatus(that.$t('user.shiMingXingXi2'), that.auth.idState, that.$t('user.shiMingXingXi'), that.auth.realNameState);
                         break;
                     case "member":
-                        authStatus(that.$t('user.geRenXingXi'), that.auth.contactState, that.$t('user.shiMingXingXi'), that.auth.idState);
+                        authStatus(that.$t('user.geRenXingXi'), that.auth.contactState, that.$t('user.shiMingXingXi2'), that.auth.idState);
                         break;
                     case "work":
                         authStatus(that.$t('user.gongZuoXingXi'), that.auth.workInfoState, that.$t('user.geRenXingXi'), that.auth.contactState);
