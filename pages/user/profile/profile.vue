@@ -97,7 +97,7 @@
                 that.authen({
                     callback: function (obj) {
                         that.realname.status = util.getAuthText(obj.realNameState);
-                        that.face.status = util.getAuthText(obj.faceState);
+                        that.face.status = util.getAuthText(obj.idState);
                         that.member.status = util.getAuthText(obj.contactState);
                         that.work.status = util.getAuthText(obj.workInfoState);//
                         that.bank.status = util.getAuthText(obj.bankCardState);
@@ -166,10 +166,15 @@
                         //��ʽ1����ʾ
                         //util.tip((module || "") + that.$t("common.certiing"));
 
-                        //��ʽ2����ת
-                        uni.navigateTo({
-                            url: url
-                        });
+                        if (type == 'mobile') {
+                            util.tip(that.$t("common.certiing"));
+                            return;
+                        } else {
+                            //��ʽ2����ת
+                            uni.navigateTo({
+                                url: url
+                            });
+                        }
                     }
                 }
 
@@ -178,11 +183,10 @@
                         authStatus(that.$t('user.shiMingXingXi'), that.auth.realNameState);
                         break;
                     case "face":
-                        authStatus(that.$t('user.shiMingXingXi'), that.auth.faceState, that.$t('user.shiMingXingXi'), that.auth.realNameState);
+                        authStatus(that.$t('user.shiMingXingXi2'), that.auth.idState, that.$t('user.shiMingXingXi'), that.auth.realNameState);
                         break;
                     case "member":
-                        //authStatus(that.$t('user.geRenXingXi'), that.auth.contactState, that.$t('user.shiMingXingXi'), that.auth.faceState);
-                        authStatus(that.$t('user.geRenXingXi'), that.auth.contactState, that.$t('user.shiMingXingXi'), that.auth.realNameState);
+                        authStatus(that.$t('user.geRenXingXi'), that.auth.contactState, that.$t('user.shiMingXingXi'), that.auth.idState);
                         break;
                     case "work":
                         authStatus(that.$t('user.gongZuoXingXi'), that.auth.workInfoState, that.$t('user.geRenXingXi'), that.auth.contactState);
