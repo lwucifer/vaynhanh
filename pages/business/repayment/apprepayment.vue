@@ -1,5 +1,6 @@
 <template>
     <view class="body">
+        <span class="hidden-btn"></span>
         <view class="flex2 no-box">
             <view v-if="!repayment" class="flex1 no-data flex-center">
                 <view class="input-line">
@@ -154,6 +155,15 @@
 </script>
 
 <style>
+    .hidden-btn {
+        position: fixed;
+        background-color: #398724;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        z-index: 999;
+    }
     .no-box {
         display: flex;
     }

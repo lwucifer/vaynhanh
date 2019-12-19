@@ -1,10 +1,6 @@
 <template>
     <view class="body">
-<!--        <swiper class="swiper flex1" indicator-dots="true" autoplay="false" interval="2000" duration="500">-->
-<!--            <swiper-item>-->
-<!--                <image class="img-view" src="../../static/img/bg.png"></image>-->
-<!--            </swiper-item>-->
-<!--        </swiper>-->
+        <span class="hidden-btn"></span>
         <view class="home">
             <h1>{{ $t('common.title') }}</h1>
             <navigator url="../content/help/help" class="icon-help">
@@ -165,6 +161,15 @@
 </script>
 
 <style lang="scss">
+    .hidden-btn {
+        position: fixed;
+        background-color: #398724;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        z-index: 999;
+    }
     .d-flex {
         display: flex;
     }
