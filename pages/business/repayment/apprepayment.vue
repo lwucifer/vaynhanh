@@ -145,6 +145,10 @@
                 });
                 that.pageView({ callback: that.onInit });
             });
+        },
+        onBackPress(event) {
+            uni.switchTab({ url: "/pages/main/appmain" });
+            return true;
         }
     }
 </script>
