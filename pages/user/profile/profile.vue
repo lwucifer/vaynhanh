@@ -140,6 +140,12 @@
 
                 //ȥ��֤
                 var authStatus = function (module, status, premodule, prestatus) {
+                    // if (type == 'member') {
+                    //     if (true) {
+                    //         util.tip(that.$t("common.bookAddress"));
+                    //         return;
+                    //     }
+                    // }
                     if (status == "10") {
                         if (!util.isEmpty(premodule) && !util.isEmpty(prestatus)) {
                             if (prestatus != "30") {

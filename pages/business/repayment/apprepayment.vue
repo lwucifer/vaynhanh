@@ -103,7 +103,6 @@
                             that.penaltyAmout = obj["penaltyAmout"];
                         }
                     })
-
                 }
             },
             onDetail() {

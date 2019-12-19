@@ -51,6 +51,7 @@ const langs = {
                 reverse: 'Mặt sau',
                 hasSelect: 'Tải lên thành công',
                 noMsg: '暂无内容',
+                bookAddress: 'Vui lòng cho phép truy cập danh bạ',
             },
             tip: {
                 qingShuRu: 'Vui lòng điền ',

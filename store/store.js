@@ -36,8 +36,7 @@ let _pageInit = function (state, input) {
 
     var initCallback = function () {
         //initstatus 所有装态都 true 才执行 initStats.loginCheck == true || initStats.xxxx == true
-        if (initStats.loginCheck == true)
-        {
+        if (initStats.loginCheck == true) {
             //页面回调
             _inputCallback(input)();
 
