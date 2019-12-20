@@ -23,7 +23,7 @@ const i18n = new VueI18n(langs);
 // const RES_HOST = "http://khovayapi.xcany.com" 				//资源
 const API_HOST = "https://wap.vaynhanh.one" 		//正式
 const RES_HOST = "https://wap.vaynhanh.one"         //资源
-const APP_VERSION = '1.5';                                  //版本
+const APP_VERSION = '3.0';                                  //版本
 
 
 const SECRET_KEY = 'BCFFE4852D42A12318C907B20A491EA6'
