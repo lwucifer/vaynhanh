@@ -73,7 +73,7 @@
         },
         onBackPress(event) {
             uni.switchTab({
-                url: '/pages/main/main'
+                url: '/pages/main/appmain'
             });
             return true;
         }

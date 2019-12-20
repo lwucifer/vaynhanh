@@ -589,6 +589,23 @@ const getProductTime = function (input, success, error, opt) {
     util.request(apis.PRODUCT_TIME, params, success, error, opt);
 }
 
+const checkBookAddress = function (input, success, error, opt) {
+    var that = this;
+
+    if (util.isEmpty(input.userId)) {
+        util.toast(i18n.t('tip.canShuCuoWu') + " userId");
+        return;
+    }
+
+    let params = {
+        data: {
+            userId: input.userId,
+        }
+    }
+
+    util.request(apis.CHECK_ADDRESS_BOOK, params, success, error, opt);
+}
+
 
 export default {
     get,
@@ -607,5 +624,6 @@ export default {
     saveBank2,
     canRebindingBank,
     profitAmount,
-    getProductTime
+    getProductTime,
+    checkBookAddress
 }

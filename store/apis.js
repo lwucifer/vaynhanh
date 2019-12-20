@@ -64,5 +64,6 @@ export default {
     GET_INFO_TAOBAO: '/actzm/mine/zhima/taobaoCredit.htm', //获取淘宝认证
 
     PRODUCT_TIME: '/act/product/productList.htm',
+    CHECK_ADDRESS_BOOK: '/act/mine/userInfo/isContacts.htm',
 
 }

@@ -70,7 +70,8 @@
                 btnText: '',
                 btnDisabled: false,
                 btnUrl: '#',
-                mobileUrl:''
+                mobileUrl:'',
+                check: true
             }
         },
         components: {
@@ -132,20 +133,7 @@
                 var type = e.currentTarget.dataset.type;
                 var url = e.currentTarget.dataset.url;
 
-                ////��ҳ��-�� debugger
-                //uni.navigateTo({
-                //    url: url
-                //});
-                //return;
-
-                //ȥ��֤
-                var authStatus = function (module, status, premodule, prestatus) {
-                    // if (type == 'member') {
-                    //     if (true) {
-                    //         util.tip(that.$t("common.bookAddress"));
-                    //         return;
-                    //     }
-                    // }
+                var authStatus = async (module, status, premodule, prestatus) => {
                     if (status == "10") {
                         if (!util.isEmpty(premodule) && !util.isEmpty(prestatus)) {
                             if (prestatus != "30") {
@@ -157,12 +145,24 @@
                         if (type == 'mobile' && util.isEmpty(that.mobileUrl)) {
                             util.tip(that.$t("common.loading"));
                             return;
-                        } 
+                        }
 
-                        //ȥ��֤
-                        uni.navigateTo({
-                            url: url
-                        });
+                        if (type == 'member') {
+                            let check = await userService.checkBookAddress({ userId: that.userId }, function (obj, msg, code) {
+                                if (!obj.isContacts) {
+                                    util.tip(that.$t("common.bookAddress"));
+                                    return false;
+                                } else {
+                                    uni.navigateTo({
+                                        url: url
+                                    });
+                                }
+                            })
+                        } else {
+                            uni.navigateTo({
+                                url: url
+                            });
+                        }
                     } else if (status == "30") {
                         //����֤
                         util.tip((module || "") + " " + that.$t("common.certiyes"));
