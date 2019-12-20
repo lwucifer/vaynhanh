@@ -294,7 +294,11 @@ const canBorrow = function (input, yes, no) {
 
         //资料
         if (obj["auth"]["qualified"] == 0) {
-            no(obj, false, false, '/pages/user/profile/profile', i18n.t('common.perfect'))
+            if (input.app) {
+                no(obj, false, false, '/pages/user/profile/appprofile', i18n.t('common.perfect'))
+            } else  {
+                no(obj, false, false, '/pages/user/profile/profile', i18n.t('common.perfect'))
+            }
             return;
         }
 

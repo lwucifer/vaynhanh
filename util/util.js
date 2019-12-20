@@ -107,7 +107,7 @@ _util.isEmpty = function (obj) {
     return _empty(obj)
 }
 
-_util.apiSuccess = function (res, success, error) {
+_util.apiSuccess = function (res, success, error, params) {
     var that = this;
     if (that.isEmpty(res)) {
         error(_network_fail())
@@ -128,7 +128,7 @@ _util.apiSuccess = function (res, success, error) {
     else if (code == 410 || code == 413) {
         _util.tip(msg || i18n.t('common.loginfail'), {
             over: function () {
-                that.toLogin();
+                that.toLogin(params.data.app);
             }
         })
     }
@@ -228,10 +228,10 @@ _util.canBorrow = function (auth) {
     return false;
 }
 
-_util.toLogin = function () {
+_util.toLogin = function (app = false) {
     var that = this;
     uni.navigateTo({
-        url: '/pages/account/account'
+        url: app ? '/pages/account/appaccount' : '/pages/account/account'
     });
 }
 
@@ -490,7 +490,7 @@ _util.request = function (path, params, success, error, opt, token = '') {
         method: method,
         header: header,
         data: data,
-        success: function (res) { that.apiSuccess(res, success, error); },
+        success: function (res) { that.apiSuccess(res, success, error, params); },
         fail: function (res) { that.apiFail(res, error); }
     }, opt);
 

@@ -128,7 +128,7 @@
             },
             onBorrowing() {
                 var that = this;
-                busService.canBorrow({ userId: that.userId, token: util.getToken() });
+                busService.canBorrow({ userId: that.userId, token: util.getToken(), app: true });
             }
         },
         onLoad() {
@@ -142,18 +142,22 @@
             var that = this;
             const id = util.getParam('userid');
             const token = util.getParam('token');
-            userService.get( {userId: id, token: token}, function (obj, msg, code) {
-                that.setAccount({
-                    user: obj,
-                    signin : {
-                        userId: id,
-                        token: token
-                    }
+            if (id && token) {
+                userService.get({userId: id, token: token, app: true}, function (obj, msg, code) {
+                    that.setAccount({
+                        user: obj,
+                        signin: {
+                            userId: id,
+                            token: token
+                        }
+                    });
+                    that.pageView({callback: that.onInit, app: true});
                 });
-                that.pageView({ callback: that.onInit });
-            });
+            } else {
+                that.pageView({callback: that.onInit, app: true});
+            }
         },
-        onBackPress(event) {
+        onBackPress() {
             uni.switchTab({ url: "/pages/main/appmain" });
             return true;
         }

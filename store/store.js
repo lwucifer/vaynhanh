@@ -12,9 +12,9 @@ import userService from '@/services/user.js'
 
 const i18n = new VueI18n(langs);
 const DEFAULT_QUOTA = 1000000
-const TOLOGIN = function () {
+const TOLOGIN = function (app = false) {
     uni.navigateTo({
-        url: '/pages/account/account'
+        url: app ? '/pages/account/appaccount' : '/pages/account/account'
     });
 }
 
@@ -43,7 +43,7 @@ let _pageInit = function (state, input) {
             //如果必须登录,跳转至登录页
             var must = input["login"] || false;
             if (must && !state.isLogin) {
-                TOLOGIN();
+                TOLOGIN(input.app);
             }
         }
     }

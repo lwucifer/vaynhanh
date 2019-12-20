@@ -74,9 +74,7 @@
                         util.success(that.$t("user.login"), {
                             duration:800,
                             over() {
-                                uni.switchTab({
-                                    url: '/pages/main/appmain'
-                                });
+								uni.navigateTo({ url: "/pages/main/appmain" });
                             }
                         });
 					}
@@ -90,7 +88,7 @@
 		},
 		onShow: function() {
             var that = this;
-            that.pageView({ callback: that.onInit });
+            that.pageView({ callback: that.onInit, app: true });
 		}
 	}
 </script>

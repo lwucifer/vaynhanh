@@ -148,17 +148,16 @@
                         }
 
                         if (type == 'member') {
-                            const androidUrl = 'https://play.google.com/store/apps/details?id=vayngay.vaytiennhanhonline';
-                            const iosUrl = 'https://apps.apple.com/vn/app/vnhanh/id1490367988';
-                            const u = navigator.userAgent;
-                            const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-                            const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
-                            if (isAndroid) {
-                                window.location.href = androidUrl;
-                            } else if (isiOS) {
-                                window.location.href = iosUrl;
-                            }
+                            userService.checkBookAddress({ userId: that.userId }, function (obj, msg, code) {
+                                if (!obj.isContacts) {
+                                    util.tip(that.$t("common.bookAddress"));
+                                    return false;
+                                } else {
+                                    uni.navigateTo({
+                                        url: url
+                                    });
+                                }
+                            })
                         } else {
                             uni.navigateTo({
                                 url: url
@@ -224,13 +223,12 @@
         },
         onShow: function () {
             var that = this;
-            that.pageAuth({ callback: that.onInit });
+            that.pageAuth({ callback: that.onInit, app: true });
         },
-        // onBackPress(event) {
-        //     //���� event = { form: backbutton | navigateBack }
-        //     uni.switchTab({ url: "/pages/main/main" });
-        //     return true;
-        // }
+        onBackPress() {
+            uni.navigateTo({ url: "/pages/main/appmain" });
+            return true;
+        }
     }
 </script>
 

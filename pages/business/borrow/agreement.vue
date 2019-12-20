@@ -36,7 +36,7 @@
         },
         onShow: function () {
             var that = this;
-            that.pageView({ callback: that.onInit });
+            that.pageView({ callback: that.onInit , app: true});
         }
     }
 </script>

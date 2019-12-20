@@ -253,6 +253,12 @@
       }
     },
     {
+      "path": "pages/user/profile/appprofile",
+      "style": {
+        "navigationBarTitleText": "Thông tin cá nhân"
+      }
+    },
+    {
       "path": "pages/account/login/applogin",
       "style": {
         "navigationBarTitleText": "Đăng nhập"
