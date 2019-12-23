@@ -147,23 +147,26 @@
                             return;
                         }
 
-                        if (type == 'member') {
-                            const androidUrl = 'https://play.google.com/store/apps/details?id=vayngay.vaytiennhanhonline';
-                            const iosUrl = 'https://apps.apple.com/vn/app/vnhanh/id1490367988';
-                            const u = navigator.userAgent;
-                            const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-                            const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-
-                            if (isAndroid) {
-                                window.location.href = androidUrl;
-                            } else if (isiOS) {
-                                window.location.href = iosUrl;
-                            }
-                        } else {
-                            uni.navigateTo({
-                                url: url
-                            });
-                        }
+                        // if (type == 'member') {
+                        //     const androidUrl = 'https://play.google.com/store/apps/details?id=vayngay.vaytiennhanhonline';
+                        //     const iosUrl = 'https://apps.apple.com/vn/app/vnhanh/id1490367988';
+                        //     const u = navigator.userAgent;
+                        //     const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+                        //     const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                        //
+                        //     if (isAndroid) {
+                        //         window.location.href = androidUrl;
+                        //     } else if (isiOS) {
+                        //         window.location.href = iosUrl;
+                        //     }
+                        // } else {
+                        //     uni.navigateTo({
+                        //         url: url
+                        //     });
+                        // }
+                        uni.navigateTo({
+                            url: url
+                        });
                     } else if (status == "30") {
                         //����֤
                         util.tip((module || "") + " " + that.$t("common.certiyes"));

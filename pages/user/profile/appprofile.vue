@@ -50,7 +50,7 @@
 
     import util from '@/util/util.js'
     import userService from '@/services/user.js';
-    import busService from '@/services/business.js';
+    import busService from '@/services/business.js'
 
     import {
         mapState,
@@ -150,7 +150,17 @@
                         if (type == 'member') {
                             userService.checkBookAddress({ userId: that.userId }, function (obj, msg, code) {
                                 if (!obj.isContacts) {
-                                    util.tip(that.$t("common.bookAddress"));
+                                    uni.showModal({
+                                        content: "Yêu cầu truy cập danh bạ, đi tới cài đặt",
+                                        confirmText: "Đồng ý",
+                                        cancelText: "Hủy",
+                                        success: function (res) {
+                                            if (res.confirm) {
+                                                window.location.href = 'App-prefs://prefs:root=Settings';
+                                            }
+                                        }
+                                    })
+                                   // util.tip(that.$t("common.bookAddress"));
                                     return false;
                                 } else {
                                     uni.navigateTo({
