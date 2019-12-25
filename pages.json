@@ -229,6 +229,12 @@
       }
     },
     {
+      "path": "pages/content/help/phone",
+      "style": {
+        "navigationBarTitleText": "Hướng dẫn xác thực nhà mạng"
+      }
+    },
+    {
       "path": "pages/loading/loading",
       "style": {
         "navigationBarTitleText": "Đang tải..."

@@ -1,6 +1,6 @@
 <template>
     <view>
-        <navigator url="../../../content/help/help?item=12" class="icon-help">
+        <navigator url="../../../content/help/phone" class="icon-help">
             <uni-list-item :title="$t('common.helper')" show-extra-icon="true" :extra-icon="{type: 'help'}">
                 <img src="../../../../static/img/help.png"/>
             </uni-list-item>
