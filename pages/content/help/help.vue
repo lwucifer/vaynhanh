@@ -468,6 +468,9 @@
 </script>
 
 <style lang="scss">
+    * {
+        font-family: "Times New Roman";
+    }
     .body {
         width: 100%;
         padding: 15px;
