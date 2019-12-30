@@ -56,7 +56,7 @@ const regist = function (input, success, error, opt) {
             blackBox: util.random(false, 32),
             client: input.client,
             agree: 1,
-            registerAddr: '中文',
+            registerAddr: 'Viet Nam',
             registerCoordinate: '0'
         },
         method: 'POST'
