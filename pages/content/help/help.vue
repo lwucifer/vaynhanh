@@ -532,7 +532,7 @@
     h3 {
         border-top: 1px solid #ddd;
         display: flex;
-        padding: 10px 0;
+        padding: 8px 0;
         align-items: center;
         color: #111;
         >span {
@@ -540,22 +540,37 @@
             min-width: 25px;
             height: 25px;
             align-items: center;
+            justify-content: center;
         }
         + div {
             border-top: 1px solid #ddd;
-            padding: 0 12px;
+            padding: 0;
             background-color: #fff;
             font-size: 13px;
             line-height: 1.5;
             color: #333;
             h3 {
                 color: #333;
+                background-color: #f8f8f8;
+                padding-left: 6px;
+                >span {
+                    min-width: 20px;
+                    height: 20px;
+                }
+                img {
+                    width: 12px;
+                    height: auto;
+                    + img {
+                        height: 12px;
+                        width: auto;
+                    }
+                }
             }
             h3:first-child {
                 border-top: 0;
             }
             h3 + div {
-                padding: 6px 12px 12px;
+                padding: 6px 12px 10px 18px;
             }
         }
         img {
