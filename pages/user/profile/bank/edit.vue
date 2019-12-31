@@ -22,7 +22,7 @@
             </view>
             <view class="input-row border">
                 <label class="title long">{{$t('user.zhangHaoKaHao')}}</label>
-                <m-input type="text" :placeholder="$t('tip.qingShuRu')+$t('user.zhangHaoKaHao')" v-model="card"></m-input>
+                <m-input type="number" :maxlength="19" :placeholder="$t('tip.qingShuRu')+$t('user.zhangHaoKaHao')" v-model="card"></m-input>
             </view>
         </view>
         <view class="input-line inner">
@@ -54,7 +54,7 @@
             ]);
             return {
                 isAuth: false,
-                bankTypes: bankTypes,//ÕËºÅÊÇ 0£¬¿¨ºÅÊÇ 1
+                bankTypes: bankTypes,//ï¿½Ëºï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1
                 bankTypeIndex: 0,
                 bankTypeText: that.$t('user.yingHangZhangHao'),
                 banks: [],
@@ -142,7 +142,7 @@
             },
             loadBanks(type) {
                 var that = this;
-                type = type || that.bankTypeIndex;//ÕËºÅÊÇ 0(BAOKIM)£¬¿¨ºÅÊÇ 1(BAOKIM_CARD)
+                type = type || that.bankTypeIndex;//ï¿½Ëºï¿½ï¿½ï¿½ 0(BAOKIM)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1(BAOKIM_CARD)
                 appService.dictionary({ type: (type == 0 ? "BAOKIM" : "BAOKIM_CARD") }, function (obj, msg, code) {
                     that.banks = obj[(type == 0 ? "baokimList" : "baokimCardList")] || [];
                     that.banks.unshift(util.SELECTFIRST());

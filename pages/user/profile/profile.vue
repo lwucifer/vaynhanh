@@ -4,12 +4,12 @@
             <uni-list>
                 <view data-url="realname/realname" data-type="realname" @tap="onGoTo">
                     <uni-list-item :title="$t('user.shiMingXingXi')" show-extra-icon="true" :extra-icon="{type: 'contact'}"
-                                 :required="true" :note="realname.descript" showArrow="false" showText="false" :text="realname.status" :sub="$t('user.sub1')">
+                                   :required="true" :note="realname.descript" showArrow="false" showText="false" :text="realname.status" :sub="$t('user.sub1')">
                     </uni-list-item>
                 </view>
                 <view data-url="realname/face" data-type="face" @tap="onGoTo">
                     <uni-list-item :title="$t('user.shiMingXingXi2')" show-extra-icon="true" :extra-icon="{type: 'image'}"
-                                 :required="true" :note="face.descript" showArrow="false" showText="false" :text="face.status" :sub="$t('user.sub6')">
+                                   :required="true" :note="face.descript" showArrow="false" showText="false" :text="face.status" :sub="$t('user.sub6')">
                     </uni-list-item>
                 </view>
                 <view data-url="member/member" data-type="member" @tap="onGoTo">
@@ -50,7 +50,7 @@
 
     import util from '@/util/util.js'
     import userService from '@/services/user.js';
-    import busService from '@/services/business.js';
+    import busService from '@/services/business.js'
 
     import {
         mapState,
@@ -148,7 +148,26 @@
                         }
 
                         if (type == 'member') {
-                            window.location.href = 'http://api.vaynhanh.one/h5/download/index.html';
+                            userService.checkBookAddress({ userId: that.userId }, function (obj, msg, code) {
+                                if (!obj.isContacts) {
+                                    uni.showModal({
+                                        content: "Yêu cầu truy cập danh bạ, đi tới cài đặt",
+                                        confirmText: "Đồng ý",
+                                        cancelText: "Hủy",
+                                        success: function (res) {
+                                            if (res.confirm) {
+                                                window.location.href = 'App-prefs://prefs:root=Settings';
+                                            }
+                                        }
+                                    })
+                                    // util.tip(that.$t("common.bookAddress"));
+                                    return false;
+                                } else {
+                                    uni.navigateTo({
+                                        url: url
+                                    });
+                                }
+                            })
                         } else {
                             uni.navigateTo({
                                 url: url
@@ -216,11 +235,10 @@
             var that = this;
             that.pageAuth({ callback: that.onInit });
         },
-        // onBackPress(event) {
-        //     //���� event = { form: backbutton | navigateBack }
-        //     uni.switchTab({ url: "/pages/main/main" });
-        //     return true;
-        // }
+        onBackPress() {
+            uni.navigateTo({ url: "/pages/main/main" });
+            return true;
+        }
     }
 </script>
 

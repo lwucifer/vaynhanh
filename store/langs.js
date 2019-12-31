@@ -4,6 +4,7 @@ const langs = {
         'vi-VN': {
             common: {
                 security: 'Bảo vệ mã hóa dữ liệu cấp ngân hàng',
+                networkfail: 'Lỗi hệ thống, vui lòng thử lại',
                 require: 'Bắt buộc',
                 currency: 'Đ',
                 currency2: 'VNĐ',

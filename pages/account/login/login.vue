@@ -74,9 +74,7 @@
                         util.success(that.$t("user.login"), {
                             duration:800,
                             over() {
-                                uni.switchTab({
-                                    url: '/pages/main/main'
-                                });
+								uni.navigateTo({ url: "/pages/main/main" });
                             }
                         });
 					}

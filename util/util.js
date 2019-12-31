@@ -65,10 +65,10 @@ var _buildParams = function (prefix, val, top, split, encoding) {
 };
 
 var _network_fail = function () {
-    return i18n.t('common.network') + i18n.t('common.request') + i18n.t('common.fail');
+    return i18n.t('common.networkfail');
 }
 var _request_error = function () {
-    return i18n.t('common.request') + i18n.t('common.error');
+    return i18n.t('common.networkfail');
 }
 
 //util
@@ -134,7 +134,6 @@ _util.apiSuccess = function (res, success, error, params) {
     }
     else {
         msg = msg || _request_error();
-        msg = msg + " [" + code + "]";
         error(msg, code);
     }
 }

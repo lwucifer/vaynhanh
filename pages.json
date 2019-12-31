@@ -239,68 +239,13 @@
       "style": {
         "navigationBarTitleText": "Đang tải..."
       }
-    },
-    {
-      "path": "pages/main/appmain",
-      "style": {
-        "navigationBarTitleText": "Trang chủ"
-      }
-    },
-    {
-      "path": "pages/business/repayment/apprepayment",
-      "style": {
-        "navigationBarTitleText": "Thanh toán"
-      }
-    },
-    {
-      "path": "pages/account/appaccount",
-      "style": {
-        "navigationBarTitleText": "Tài khoản"
-      }
-    },
-    {
-      "path": "pages/user/profile/appprofile",
-      "style": {
-        "navigationBarTitleText": "Thông tin cá nhân"
-      }
-    },
-    {
-      "path": "pages/account/login/applogin",
-      "style": {
-        "navigationBarTitleText": "Đăng nhập"
-      }
-    },
-    {
-      "path": "pages/account/reg/appreg",
-      "style": {
-        "navigationBarTitleText": "Tạo tài khoản"
-      }
     }
   ],
   "tabBar": {
     "color": "#7a7e83",
     "selectedColor": "#3D662C",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/main/main",
-        "text": "Vay",
-        "iconPath": "static/img/home.png",
-        "selectedIconPath": "static/img/home_active.png"
-      },
-      {
-        "pagePath": "pages/business/repayment/repayment",
-        "text": "Thanh toán",
-        "iconPath": "static/img/repay.png",
-        "selectedIconPath": "static/img/repay_active.png"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "Của tôi",
-        "iconPath": "static/img/user.png",
-        "selectedIconPath": "static/img/user_active.png"
-      }
-    ]
+    "list": []
   },
   "globalStyle": {
     "navigationBarTextStyle": "white",
