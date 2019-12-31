@@ -50,6 +50,7 @@
     import util from '@/util/util.js'
     import appService from '@/services/application.js'
     import busService from '@/services/business.js'
+    import userService from '@/services/user.js'
 
     export default {
         data() {
@@ -160,7 +161,22 @@
         },
         onShow: function () {
             var that = this;
-            that.pageView({ callback: that.onInit });
+            const id = util.getParam('userid');
+            const token = util.getParam('token');
+            if (id && token) {
+                userService.get({userId: id, token: token}, function (obj, msg, code) {
+                    that.setAccount({
+                        user: obj,
+                        signin: {
+                            userId: id,
+                            token: token
+                        }
+                    });
+                    that.pageView({callback: that.onInit});
+                });
+            } else {
+                that.pageView({callback: that.onInit});
+            }
         }
     }
 </script>

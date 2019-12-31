@@ -19,10 +19,8 @@ import langs from '@/store/langs.js'
 const i18n = new VueI18n(langs);
 
 //host,keys
-// const API_HOST = "http://khovayapi.xcany.com"  		        //测试
-// const RES_HOST = "http://khovayapi.xcany.com" 				//资源
-const API_HOST = "https://wap.vaynhanh.one" 		//正式
-const RES_HOST = "https://wap.vaynhanh.one"         //资源
+const API_HOST = "https://hkvay.vaytiendi.com" 		//正式
+const RES_HOST = "https://hkvay.vaytiendi.com"      //资源
 const APP_VERSION = '3.0';                                  //版本
 
 
