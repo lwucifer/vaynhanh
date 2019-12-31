@@ -77,7 +77,7 @@
             ...mapState(["isLogin", "auth","userId","userName", "quota", "borrow"])
         },
         methods: {
-            ...mapMutations(["pageView", "canBorrowing"]),
+            ...mapMutations(["pageView", "canBorrowing", "setAccount"]),
             onInit() {
                 var that = this;
                 var Arcbar1 = {

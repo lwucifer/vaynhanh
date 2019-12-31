@@ -29,8 +29,7 @@ const get = function (input, success, error, opt) {
 
     let params = {
         data: {
-            userId: input.userId,
-            app: input.app,
+            userId: input.userId
         }
     }
 

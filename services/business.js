@@ -261,6 +261,8 @@ const repaymentEPAY = function (input, success, error, opt) {
 }
 
 const canBorrow = function (input, yes, no) {
+    console.log(input)
+
     input = input || {};
     var userId = input["userId"] || "";
 
@@ -294,11 +296,7 @@ const canBorrow = function (input, yes, no) {
 
         //资料
         if (obj["auth"]["qualified"] == 0) {
-            if (input.app) {
-                no(obj, false, false, '/pages/user/profile/appprofile', i18n.t('common.perfect'))
-            } else  {
-                no(obj, false, false, '/pages/user/profile/profile', i18n.t('common.perfect'))
-            }
+            no(obj, false, false, '/pages/user/profile/profile', i18n.t('common.perfect'))
             return;
         }
 

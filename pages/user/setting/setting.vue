@@ -50,9 +50,7 @@
                 util.confirm(that.$t('user.shiFouTuiChuDengLu'), function () {
                     that.logout({
                         callback() {
-                            uni.switchTab({
-                                url: '/pages/main/main'
-                            });
+                            uni.navigateTo({ url: "/pages/main/main" });
                         }
                     });
                 })

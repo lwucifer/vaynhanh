@@ -83,7 +83,7 @@
             ...mapState(["userId", "isLogin", "auth"])
         },
         methods: {
-            ...mapMutations(["pageView"]),
+            ...mapMutations(["pageView", "setAccount"]),
             onInit() {
                 var that = this;
                 if (that.isLogin) {
